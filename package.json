@@ -1,0 +1,22 @@
+{
+  "name": "fintech",
+  "version": "1.0.0",
+  "description": "",
+  "main": "httpServer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skymill2000/fintech20201019.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/skymill2000/fintech20201019/issues"
+  },
+  "homepage": "https://github.com/skymill2000/fintech20201019#readme",
+  "dependencies": {
+    "request": "^2.88.2"
+  }
+}
