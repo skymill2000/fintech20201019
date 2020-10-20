@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/skymill2000/fintech20201019#readme",
   "dependencies": {
-    "request": "^2.88.2"
+    "request": "^2.88.2",
+    "xml2js": "^0.4.23"
   }
 }
