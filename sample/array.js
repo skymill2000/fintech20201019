@@ -15,7 +15,6 @@ var carObject = {
 
 var cars = ["Saab", "Volvo", "BMW", numberData, carObject];
 //java String [] cars = new Array(6);
-
 console.log(cars);
 console.log(cars[0]);
 console.log(cars[1]);
