@@ -11,12 +11,19 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 //urlencoded 형식의 데이터 전송을 허용하겠다
 
+app.use(express.static(__dirname + '/public'));
+//정적 파일(디자인 플러그인 등)을 사용하기 위한 폴더 설정
+
 app.get('/', function (req, res) {
   res.send('Hello World')
 })
 
 app.get('/hello', function (req, res) {
   res.render('test');
+})
+
+app.get('/ejsTest', function(req, res){
+  res.render('ejsTest');
 })
 
 app.post('/getData',function(req, res){
@@ -27,6 +34,4 @@ app.post('/getData',function(req, res){
   res.json(1);
 })
 
-
-
-app.listen(3000)
+app.listen(3000);
