@@ -19,8 +19,21 @@
     $("#sendButton").click(function(){
         var userId = $("#userId").val();
         var userPassword = $("#userPassword").val();
-        alert(userId + "," + userPassword);
         console.log(userId, userPassword);
+        $.ajax({
+                url:'/getData',
+                type : 'POST',
+                data : {
+                    sendUserId : userId,
+                    sendUserPassword : userPassword 
+                },
+                success:function(responseData){
+                    if(responseData == "1"){
+                        console.log("전송성공");
+                    }
+                }
+            })       
+
     })
 </script>
 
