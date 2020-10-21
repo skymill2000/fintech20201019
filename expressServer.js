@@ -1,4 +1,5 @@
 const express = require('express')
+const request = require("request");
 const app = express()
 
 app.set('views', __dirname + '/views');
@@ -20,6 +21,22 @@ app.get('/', function (req, res) {
 
 app.get('/signup', function(req, res){
   res.render('signup');
+})
+
+app.get('/authResult', function(req, res){
+  var authCode = req.query.code;
+  console.log(authCode);
+  var option = {
+    method: "POST",
+    url: "",
+    headers: {
+    },
+    //form 형태는 form / 쿼리스트링 형태는 qs / json 형태는 json ***
+    form: {
+      //#자기 키로 시크릿 변경
+    },
+  };
+
 })
 
 // app.post('/getData',function(req, res){
