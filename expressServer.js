@@ -18,20 +18,13 @@ app.get('/', function (req, res) {
   res.send('Hello World')
 })
 
-app.get('/hello', function (req, res) {
-  res.render('test');
-})
 
-app.get('/ejsTest', function(req, res){
-  res.render('ejsTest');
-})
-
-app.post('/getData',function(req, res){
-  console.log(req.body);
-  var getUserId = req.body.sendUserId;
-  var getUserPassword = req.body.sendUserPassword;
-  console.log(getUserId, getUserPassword);
-  res.json(1);
-})
+// app.post('/getData',function(req, res){
+//   console.log(req.body);
+//   var getUserId = req.body.sendUserId;
+//   var getUserPassword = req.body.sendUserPassword;
+//   console.log(getUserId, getUserPassword);
+//   res.json(1);
+// })
 
 app.listen(3000);
