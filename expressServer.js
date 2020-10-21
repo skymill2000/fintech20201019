@@ -12,12 +12,9 @@ app.get('/', function (req, res) {
 })
 
 app.get('/hello', function (req, res) {
-  res.send('Hello New hello')
+  res.render('test');
 })
 
-app.get('/user', function(req, res){
-  res.send('good!');
-})
 
 
 app.listen(3000)
