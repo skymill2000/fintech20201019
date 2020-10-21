@@ -18,6 +18,9 @@ app.get('/', function (req, res) {
   res.send('Hello World')
 })
 
+app.get('/signup', function(req, res){
+  res.render('signup');
+})
 
 // app.post('/getData',function(req, res){
 //   console.log(req.body);
