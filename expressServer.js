@@ -28,15 +28,24 @@ app.get('/authResult', function(req, res){
   console.log(authCode);
   var option = {
     method: "POST",
-    url: "",
+    url: "https://testapi.openbanking.or.kr/oauth/2.0/token",
     headers: {
+      "Content-Type" : "application/x-www-form-urlencoded; charset=UTF-8"
     },
     //form 형태는 form / 쿼리스트링 형태는 qs / json 형태는 json ***
     form: {
+      code : authCode,
+      client_id : "q7kH44ThJwjpvNRg0BbJvE1yxvx5X53DKz1rNgPF",
+      client_secret : "yVT6irMr2h4ZTHzZY7sDpbvhm1nlOzr4nP7DYRVy",
+      redirect_uri : "http://localhost:3000/authResult",
+      grant_type : "authorization_code"
       //#자기 키로 시크릿 변경
     },
   };
-
+  request(option, function(err, response, body){
+    console.log(body);
+    res.json(body);
+  })
 })
 
 // app.post('/getData',function(req, res){
