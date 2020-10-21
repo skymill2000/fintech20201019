@@ -21,8 +21,10 @@ app.get('/hello', function (req, res) {
 
 app.post('/getData',function(req, res){
   console.log(req.body);
-  // var getUserId = req.body.sendUserId;
-  // var getUserPassword = req.body.sendUserPassword;
+  var getUserId = req.body.sendUserId;
+  var getUserPassword = req.body.sendUserPassword;
+  console.log(getUserId, getUserPassword);
+  res.json(1);
 })
 
 
