@@ -6,7 +6,6 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 //여러가지 뷰 엔진중에서 ejs 를 사용하겠다 
 
-
 app.get('/', function (req, res) {
   res.send('Hello World')
 })
