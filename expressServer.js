@@ -135,21 +135,37 @@ app.post('/login', function(req, res){
 })
 
 app.post('/list', auth, function(req, res){
-  var option = {
-    method: "GET",
-    url: "https://testapi.openbanking.or.kr/v2.0/user/me",
-    headers: {
-      "Authorization" : "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiIxMTAwMDM0NzM2Iiwic2NvcGUiOlsiaW5xdWlyeSIsImxvZ2luIiwidHJhbnNmZXIiXSwiaXNzIjoiaHR0cHM6Ly93d3cub3BlbmJhbmtpbmcub3Iua3IiLCJleHAiOjE2MTExMDg2OTksImp0aSI6IjI5OWVmZTY1LTlmNjAtNGI3Ny1hYzg0LTFhMWU4NmMyMzIzNyJ9.p7CBndIB69oJxk6JXIygYASZco8uVd8nXYE6OSaz1tA"
-    },
-    //form 형태는 form / 쿼리스트링 형태는 qs / json 형태는 json ***
-    qs: {
-      user_seq_no : "1100034736"
-    },
-  };
-  request(option, function(err, response, body){
-    var listDataResult = JSON.parse(body); //JSON 오브젝트를 JS 오브젝트로 변경
-    console.log(listDataResult);
-    res.json(listDataResult)
+  var userId = req.decoded.userId;
+  //{ 토큰에 담겨있는 사용자 정보
+  // "userId": 6,
+  // "userEmail": "test@test.com",
+  // "iat": 1600921603,
+  // "exp": 1601008003,
+  //"iss": "fintech.admin",
+  //"sub": "user.login.info"
+  //}
+
+  var userSearchSql = "SELECT * FROM user WHERE id = ?";
+  connection.query(userSearchSql,[userId], function(err, results){
+    if(err) throw err;
+    else {
+      var option = {
+        method: "GET",
+        url: "https://testapi.openbanking.or.kr/v2.0/user/me",
+        headers: {
+          "Authorization" : "Bearer " + results[0].accesstoken
+        },
+        //form 형태는 form / 쿼리스트링 형태는 qs / json 형태는 json ***
+        qs: {
+          user_seq_no : results[0].userseqno
+        },
+      };
+      request(option, function(err, response, body){
+        var listDataResult = JSON.parse(body); //JSON 오브젝트를 JS 오브젝트로 변경
+        console.log(listDataResult);
+        res.json(listDataResult)
+      })    
+    }
   })
 })
 
