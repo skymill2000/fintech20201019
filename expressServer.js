@@ -172,6 +172,13 @@ app.post('/list', auth, function(req, res){
   })
 })
 
+app.post('/balance', auth , function(req, res){
+  var userId = req.decoded.userId;
+  var finusenum = req.body.fin_use_num;
+  //데이터베이스에 사용자 Accesstoken , 조회 후
+  //금융위 API 잔액 조회 요청 만들고 데이터 그대로 response 하기
+})
+
 // app.post('/getData',function(req, res){
 //   console.log(req.body);
 //   var getUserId = req.body.sendUserId;
