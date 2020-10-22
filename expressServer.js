@@ -42,7 +42,12 @@ app.get('/login', function(req, res){
 
 app.get('/authTest', auth ,function(req, res){
   console.log(req.decoded);
+  //토큰에 있는 데이터 확인
   res.json("로그인 성공! / 컨텐츠를 볼 수 있습니다.")
+})
+
+app.get('/main', function(req, res){
+  res.render('main');  
 })
 
 app.get('/authResult', function(req, res){
