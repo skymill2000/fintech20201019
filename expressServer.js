@@ -177,6 +177,32 @@ app.post('/balance', auth , function(req, res){
   var finusenum = req.body.fin_use_num;
   //데이터베이스에 사용자 Accesstoken , 조회 후
   //금융위 API 잔액 조회 요청 만들고 데이터 그대로 response 하기
+  var userSearchSql = "SELECT * FROM user WHERE id = ?";
+  var countnum = Math.floor(Math.random() * 1000000000) + 1;
+  var transId = "T991599190U" + countnum; //이용기관번호 본인것 입력
+  connection.query(userSearchSql,[userId], function(err, results){
+    if(err) throw err;
+    else {
+      var option = {
+        method: "GET",
+        url: "https://testapi.openbanking.or.kr/v2.0/account/balance/fin_num",
+        headers: {
+          "Authorization" : "Bearer " + results[0].accesstoken
+        },
+        //form 형태는 form / 쿼리스트링 형태는 qs / json 형태는 json ***
+        qs: {
+          bank_tran_id : transId,
+          fintech_use_num : finusenum,
+          tran_dtime : "20201022144300"
+        },
+      };
+      request(option, function(err, response, body){
+        var balanceData = JSON.parse(body); //JSON 오브젝트를 JS 오브젝트로 변경
+        console.log(balanceData);
+        res.json(balanceData)
+      })    
+    }
+  })
 })
 
 // app.post('/getData',function(req, res){
