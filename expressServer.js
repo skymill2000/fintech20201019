@@ -134,6 +134,23 @@ app.post('/login', function(req, res){
   });
 })
 
+app.post('/list', auth, function(req, res){
+  var option = {
+    method: "",
+    url: "",
+    headers: {
+    },
+    //form 형태는 form / 쿼리스트링 형태는 qs / json 형태는 json ***
+    form: {
+    },
+  };
+  request(option, function(err, response, body){
+    var listDataResult = JSON.parse(body); //JSON 오브젝트를 JS 오브젝트로 변경
+    console.log(listDataResult);
+    res.json(listDataResult)
+  })
+})
+
 // app.post('/getData',function(req, res){
 //   console.log(req.body);
 //   var getUserId = req.body.sendUserId;
