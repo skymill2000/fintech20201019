@@ -136,12 +136,14 @@ app.post('/login', function(req, res){
 
 app.post('/list', auth, function(req, res){
   var option = {
-    method: "",
-    url: "",
+    method: "GET",
+    url: "https://testapi.openbanking.or.kr/v2.0/user/me",
     headers: {
+      "Authorization" : "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiIxMTAwMDM0NzM2Iiwic2NvcGUiOlsiaW5xdWlyeSIsImxvZ2luIiwidHJhbnNmZXIiXSwiaXNzIjoiaHR0cHM6Ly93d3cub3BlbmJhbmtpbmcub3Iua3IiLCJleHAiOjE2MTExMDg2OTksImp0aSI6IjI5OWVmZTY1LTlmNjAtNGI3Ny1hYzg0LTFhMWU4NmMyMzIzNyJ9.p7CBndIB69oJxk6JXIygYASZco8uVd8nXYE6OSaz1tA"
     },
     //form 형태는 form / 쿼리스트링 형태는 qs / json 형태는 json ***
-    form: {
+    qs: {
+      user_seq_no : "1100034736"
     },
   };
   request(option, function(err, response, body){
