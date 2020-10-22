@@ -111,7 +111,7 @@ app.post('/login', function(req, res){
               console.log("로그인 성공", token);
               res.json(token);
             }
-
+          );
         }
         else {
           //로그인 불가
