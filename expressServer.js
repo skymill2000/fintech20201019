@@ -50,6 +50,10 @@ app.get('/main', function(req, res){
   res.render('main');  
 })
 
+app.get('/balance', function(req, res){
+  res.render('balance');  
+})
+
 app.get('/authResult', function(req, res){
   var authCode = req.query.code;
   console.log(authCode);
@@ -144,7 +148,6 @@ app.post('/list', auth, function(req, res){
   //"iss": "fintech.admin",
   //"sub": "user.login.info"
   //}
-
   var userSearchSql = "SELECT * FROM user WHERE id = ?";
   connection.query(userSearchSql,[userId], function(err, results){
     if(err) throw err;
