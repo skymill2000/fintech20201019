@@ -45,9 +45,12 @@ app.get('/authResult', function(req, res){
   request(option, function(err, response, body){
     var accessRequestResult = JSON.parse(body); //JSON 오브젝트를 JS 오브젝트로 변경
     console.log(accessRequestResult);
-    res.render("resultChild", { data: accessRequestResult }); //data 란른 이름으로 resultChild 에 데이터 전달
-
+    res.render("resultChild", { data: accessRequestResult }); //data 이름으로 resultChild 에 데이터 전달
   })
+})
+
+app.post('/signup', function(req, res){
+  
 })
 
 // app.post('/getData',function(req, res){

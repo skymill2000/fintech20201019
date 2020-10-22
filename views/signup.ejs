@@ -317,6 +317,15 @@
         var userAccessToken = $("#userAccessToken").val();
         var userRefreshToken = $("#userRefreshToken").val();
         var userSeqNo = $("#userSeqNo").val();
+        $.ajax({
+                url:'/',
+                type : 'POST',
+                data : {
+                },
+                success:function(responseData){
+                }
+            })       
+
       });
     </script>
   </body>
