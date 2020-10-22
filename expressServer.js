@@ -1,6 +1,7 @@
 const express = require('express')
 const request = require("request");
 const app = express()
+var auth = require('./lib/auth');
 var jwt = require('jsonwebtoken');
 //database 연결 설정 ------------
 var mysql = require("mysql");
