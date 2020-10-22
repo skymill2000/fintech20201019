@@ -175,8 +175,10 @@ app.post('/list', auth, function(req, res){
 app.post('/balance', auth , function(req, res){
   var userId = req.decoded.userId;
   var finusenum = req.body.fin_use_num;
+  console.log(finusenum);
   //데이터베이스에 사용자 Accesstoken , 조회 후
   //금융위 API 잔액 조회 요청 만들고 데이터 그대로 response 하기
+  
   var userSearchSql = "SELECT * FROM user WHERE id = ?";
   var countnum = Math.floor(Math.random() * 1000000000) + 1;
   var transId = "T991599190U" + countnum; //이용기관번호 본인것 입력
@@ -203,6 +205,10 @@ app.post('/balance', auth , function(req, res){
       })    
     }
   })
+})
+
+app.post('/transactionlist', auth, function(req, res){
+  
 })
 
 // app.post('/getData',function(req, res){
