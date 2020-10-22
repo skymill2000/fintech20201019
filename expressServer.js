@@ -69,6 +69,7 @@ app.post('/signup', function(req, res){
   var userRefreshToken = req.body.userRefreshToken;
   var userSeqNo = req.body.userSeqNo;
   var userInsertSql ="INSERT INTO user (`name`, `email`, `password`, `accesstoken`, `refreshtoken`, `userseqno`) VALUES (?, ?, ?, ?, ?, ?);"
+  //데이터 베이스 서버에 전달할 SQL , 입력 변수는 ? <-- 표현으로... , ? <-- 안에 데이터는 connection.query function 에 2번째 [배열]
   connection.query(userInsertSql, [userName, userEmail, userPassword, userAccessToken, userRefreshToken, userSeqNo], function (error, results, fields) {
     if (error) throw error;
     else {
