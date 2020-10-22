@@ -2,6 +2,18 @@ const express = require('express')
 const request = require("request");
 const app = express()
 
+//database 연결 설정 ------------
+var mysql = require("mysql");
+var connection = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  password: "1q2w3e4r",
+  database: "fintech1019",
+});
+connection.connect();
+//database 연결 설정 ------------
+//connection pooling 기법 검색
+
 app.set('views', __dirname + '/views');
 //뷰 파일이 있는 디렉토리를 지정합니다.
 app.set('view engine', 'ejs');
@@ -56,6 +68,11 @@ app.post('/signup', function(req, res){
   var userAccessToken = req.body.userAccessToken;
   var userRefreshToken = req.body.userRefreshToken;
   var userSeqNo = req.body.userSeqNo;
+  connection.query("", function (error, results, fields) {
+    if (error) throw error;
+    console.log(results);
+  });
+  
   console.log(req.body);
 })
 
