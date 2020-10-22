@@ -68,11 +68,15 @@ app.post('/signup', function(req, res){
   var userAccessToken = req.body.userAccessToken;
   var userRefreshToken = req.body.userRefreshToken;
   var userSeqNo = req.body.userSeqNo;
-  connection.query("", function (error, results, fields) {
+  var userInsertSql ="INSERT INTO user (`name`, `email`, `password`, `accesstoken`, `refreshtoken`, `userseqno`) VALUES (?, ?, ?, ?, ?, ?);"
+  connection.query(userInsertSql, [userName, userEmail, userPassword, userAccessToken, userRefreshToken, userSeqNo], function (error, results, fields) {
     if (error) throw error;
-    console.log(results);
-  });
-  
+    else {
+      res.json(1);
+    }
+ });
+
+
   console.log(req.body);
 })
 

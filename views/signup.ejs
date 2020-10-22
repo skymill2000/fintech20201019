@@ -329,6 +329,9 @@
                   userSeqNo: userSeqNo,
                 },
                 success:function(responseData){
+                  if(responseData == "1"){
+                    alert("가입 완료");
+                  }
                 }
             })       
       });
