@@ -41,6 +41,7 @@ app.get('/login', function(req, res){
 })
 
 app.get('/authTest', auth ,function(req, res){
+  console.log(req.decoded);
   res.json("로그인 성공! / 컨텐츠를 볼 수 있습니다.")
 })
 
