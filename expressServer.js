@@ -96,6 +96,7 @@ app.post('/login', function(req, res){
       else {
         var storedPassword = results[0].password;
         if(userPassword == storedPassword){
+          var tokenKey = "fintech1234!" // 토큰키 추가
           jwt.sign(
             {
               userId: results[0].id,
