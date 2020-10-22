@@ -83,6 +83,19 @@ app.post('/signup', function(req, res){
   console.log(req.body);
 })
 
+app.post('/login', function(req, res){
+  var userEmail = req.body.userEmail;
+  var userPassword = req.body.userPassword;
+  var userCheckSql = "SELECT * FROM user WHERE email = ?"
+  connection.query(userCheckSql, [userEmail], function (error, results, fields) {
+    if (error) throw error;
+    else {
+      res.json(1);
+    }
+  });
+
+})
+
 // app.post('/getData',function(req, res){
 //   console.log(req.body);
 //   var getUserId = req.body.sendUserId;

@@ -165,8 +165,13 @@
           url: "/login",
           type: "POST",
           data: {
+            userEmail : userEmail,
+            userPassword : userPassword
           },
           success: function (data) {
+              if(data == '1'){
+                  console.log('로그인 완료');
+              }
           },
         });
     });
