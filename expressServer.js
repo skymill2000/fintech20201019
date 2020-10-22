@@ -50,7 +50,13 @@ app.get('/authResult', function(req, res){
 })
 
 app.post('/signup', function(req, res){
-  
+  var userName = req.body.userName;
+  var userEmail = req.body.userName;
+  var userPassword =req.body.userPassword;
+  var userAccessToken = req.body.userAccessToken;
+  var userRefreshToken = req.body.userRefreshToken;
+  var userSeqNo = req.body.userSeqNo;
+  console.log(req.body);
 })
 
 // app.post('/getData',function(req, res){
