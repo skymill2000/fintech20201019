@@ -35,6 +35,10 @@ app.get('/signup', function(req, res){
   res.render('signup');
 })
 
+app.get('/login', function(req, res){
+  res.render('login');
+})
+
 app.get('/authResult', function(req, res){
   var authCode = req.query.code;
   console.log(authCode);
@@ -75,9 +79,7 @@ app.post('/signup', function(req, res){
     else {
       res.json(1);
     }
- });
-
-
+  });
   console.log(req.body);
 })
 
