@@ -1,7 +1,7 @@
 const express = require('express')
 const request = require("request");
 const app = express()
-
+var jwt = require('jsonwebtoken');
 //database 연결 설정 ------------
 var mysql = require("mysql");
 var connection = mysql.createConnection({
@@ -90,10 +90,36 @@ app.post('/login', function(req, res){
   connection.query(userCheckSql, [userEmail], function (error, results, fields) {
     if (error) throw error;
     else {
-      res.json(1);
+      if(results.length == 0){
+        res.json(2);
+      }
+      else {
+        var storedPassword = results[0].password;
+        if(userPassword == storedPassword){
+          jwt.sign(
+            {
+              userId: results[0].id,
+              userEmail: results[0].email,
+            },
+            tokenKey,
+            {
+              expiresIn: "1d",
+              issuer: "fintech.admin",
+              subject: "user.login.info",
+            },
+            function (err, token) {
+              console.log("로그인 성공", token);
+              res.json(token);
+            }
+
+        }
+        else {
+          //로그인 불가
+          res.json(2);
+        }
+      }
     }
   });
-
 })
 
 // app.post('/getData',function(req, res){
