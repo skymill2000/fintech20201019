@@ -40,6 +40,10 @@ app.get('/login', function(req, res){
   res.render('login');
 })
 
+app.get('/authTest', auth ,function(req, res){
+  res.json("로그인 성공! / 컨텐츠를 볼 수 있습니다.")
+})
+
 app.get('/authResult', function(req, res){
   var authCode = req.query.code;
   console.log(authCode);
