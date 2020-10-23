@@ -321,6 +321,27 @@
         });
 
       });
+
+      function pay(data){
+          var from_fin_use_num = data;
+          console.log(data);
+          $.ajax({
+          url: "/withdraw",
+          type: "POST",
+          headers: {
+            ourtoken: jwtToken,
+          },
+          data: {
+            fin_use_num: from_fin_use_num,
+            to_fin_use_num: to_fin_use_num,
+            amount: $("#amount").val(),
+          },
+          success: function (data) {
+            console.log(data);
+          },
+        });
+      }
+
       Instascan.Camera.getCameras()
         .then(function (cameras) {
           if (cameras.length > 0) {
