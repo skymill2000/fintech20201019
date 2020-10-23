@@ -292,6 +292,34 @@
       var to_fin_use_num = undefined; // qr 코드로 부터 읽은 핀테크 번호
       scanner.addListener("scan", function (content) {
         console.log(content)
+        to_fin_use_num = content;
+        $("#largePopup").show();
+        $.ajax({
+          url: "/list",
+          type: "POST",
+          headers: {
+            ourtoken: jwtToken,
+          },
+          success: function (data) {
+            console.log(data.res_list);
+            for (var i = 0; i < data.res_list.length; i++) {
+              var element = data.res_list[i];
+              console.log(element);
+              $("#accountList").append(
+                "<tr><td>" +
+                  (i + 1) +
+                  "</td><td>" +
+                  element.account_alias +
+                  "</td><td>" +
+                  "<button onclick=\"pay('" +
+                  element.fintech_use_num +
+                  "')\">결제하기</button>" +
+                  "</td></tr>"
+              );
+            }
+          },
+        });
+
       });
       Instascan.Camera.getCameras()
         .then(function (cameras) {
