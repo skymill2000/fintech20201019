@@ -359,7 +359,9 @@
             amount: $("#amount").val(),
           },
           success: function (data) {
-            console.log(data);
+            if(data == '1'){
+                alert('결제완료');
+            }
           },
         });
       }
