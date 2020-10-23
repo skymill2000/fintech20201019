@@ -251,6 +251,10 @@ app.post('/transactionlist', auth, function(req, res){
   })
 })
 
+app.post('/withdraw', auth, function(req, res){
+  //#출금 기능만 완성해 주세요 !
+})
+
 
 // app.post('/getData',function(req, res){
 //   console.log(req.body);
