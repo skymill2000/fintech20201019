@@ -319,8 +319,30 @@
             }
           },
         });
-
       });
+      //카메라 실행이 불가능할 경우
+    //   function pay(){ 
+    //       var to_fin_use_num = "받는분의 핀테크계좌 번호"
+    //       var from_fin_use_num = "보내는 사람의 핀테크 계좌 번호"
+    //       console.log(data);
+    //       $.ajax({
+    //       url: "/withdraw",
+    //       type: "POST",
+    //       headers: {
+    //         ourtoken: jwtToken,
+    //       },
+    //       data: {
+    //         fin_use_num: from_fin_use_num,
+    //         to_fin_use_num: to_fin_use_num,
+    //         amount: $("#amount").val(),
+    //       },
+    //       success: function (data) {
+    //         console.log(data);
+    //       },
+    //     });
+    //   }
+    //   pay();
+
 
       function pay(data){
           var from_fin_use_num = data;
